@@ -6,6 +6,7 @@ class MiniBank {
 
     // Metod för att köra klassen från main
     public void run() {
+        User createUser = new User();
 
         // Variabel som genererar ett slumpmässigt kontonummer
         Random random = new Random();
@@ -34,30 +35,8 @@ class MiniBank {
 
             // Menyval 1 (Skapa användare)
             if (input.equals("1")) {
-                System.out.println("==== Skapa användare ====");
+                createUser.run();
 
-                // Läser in användarens uppgifter
-                System.out.print("Förnamn: ");
-                String firstName = in.nextLine();
-
-                System.out.print("Efternamn: ");
-                String lastName = in.nextLine();
-
-                System.out.print("Önskad pinkod: ");
-                String pinCode = in.nextLine();
-
-                // Sparar användarens uppgifter
-                savedFullName = firstName + " " + lastName;
-                savedPinCode = pinCode;
-
-                // Skriver ut användarens alla uppgifter
-                System.out.println("==============================");
-                System.out.println("Användare skapad!");
-                System.out.println("Fullständigt namn: " + savedFullName);
-                System.out.println("Pinkod: " + savedPinCode);
-                System.out.println("Ditt kontonummer: " + accountNumber);
-                System.out.println("Saldo: " + bankAccount);
-                System.out.println("==============================");
             }
 
             // Menyval 2 (Logga in)
