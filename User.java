@@ -2,46 +2,52 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class User {
+    private String fullName; // Sparar användarens fullständiga namn
+    private String pinCode; // Sparar användarens pinkod
 
-    public void run() {
+    // Variabel som genererar ett slumpmässigt kontonummer
+    Random random = new Random();
+    int accountNumber = random.nextInt(1000000);
 
-        // Variabler för att spara användarens uppgifter
-        String savedFullName = null;
-        String savedPinCode = null;
-
-        // Variabel som genererar ett slumpmässigt kontonummer
-        Random random = new Random();
-        int accountNumber = random.nextInt(1000000);
-        // Variabel för bankkonto med 5000 SEK i saldo
-        double bankAccount = 5000;
-
-        // Scanner
-        Scanner in = new Scanner(System.in);
-
+    // Metod för att skapa en användare
+    public void createUser(Scanner in) {
         System.out.println("==== Skapa användare ====");
 
-        // Läser in användarens uppgifter
+        // Läs in användarens förnamn
         System.out.print("Förnamn: ");
         String firstName = in.nextLine();
 
+        // Läs in användarens efternamn
         System.out.print("Efternamn: ");
         String lastName = in.nextLine();
 
+        // Läs in användarens önskade pinkod
         System.out.print("Önskad pinkod: ");
-        String pinCode = in.nextLine();
+        pinCode = in.nextLine();
 
-        // Sparar användarens uppgifter
-        savedFullName = firstName + " " + lastName;
-        savedPinCode = pinCode;
+        // Spara det fullständiga namnet
+        fullName = firstName + " " + lastName;
 
-        // Skriver ut användarens alla uppgifter
-        System.out.println("==============================");
+        // Bekräftelse till användaren
         System.out.println("Användare skapad!");
-        System.out.println("Fullständigt namn: " + savedFullName);
-        System.out.println("Pinkod: " + savedPinCode);
-        System.out.println("Ditt kontonummer: " + accountNumber);
-        System.out.println("Saldo: " + bankAccount);
-        System.out.println("==============================");
+        System.out.println("Fullständigt namn: " + fullName);
+        System.out.println("Kontonummer: " + accountNumber);
+        System.out.println("Pinkod: " + pinCode);
+    }
 
+    // Getter för fullständigt namn
+    public String getFullName() {
+        return fullName;
+    }
+
+    // Getter för pinkod
+    public String getPinCode() {
+        return pinCode;
+
+    }
+
+    // Getter för kontonummer
+    public int getAccountNumber() {
+        return accountNumber;
     }
 }

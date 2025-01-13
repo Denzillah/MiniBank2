@@ -4,13 +4,12 @@ import java.util.Scanner;
 // Paketprivat klass
 class MiniBank {
 
+    // Läser in användarens uppgifter
+    private User currentUser;
+
     // Metod för att köra klassen från main
     public void run() {
-        User createUser = new User();
 
-        // Variabel som genererar ett slumpmässigt kontonummer
-        Random random = new Random();
-        int accountNumber = random.nextInt(1000000);
         // Variabel för bankkonto med 5000 SEK i saldo
         double bankAccount = 5000;
 
@@ -35,8 +34,10 @@ class MiniBank {
 
             // Menyval 1 (Skapa användare)
             if (input.equals("1")) {
-                createUser.run();
-
+                currentUser = new User();
+                currentUser.createUser(in);
+                savedFullName = currentUser.getFullName();
+                savedPinCode = currentUser.getPinCode();
             }
 
             // Menyval 2 (Logga in)
@@ -56,10 +57,8 @@ class MiniBank {
                 if (enteredFullName.equals(savedFullName) && enteredPinCode.equals(savedPinCode)) {
                     System.out.println("Inloggning lyckades!");
                     System.out.println("\nVälkommen " + enteredFullName);
-                    System.out.println("Kontonummer: " + accountNumber);
+                    System.out.println("Kontonummer: " + currentUser.getAccountNumber());
                     System.out.println("Ditt saldo är " + bankAccount + " SEK.");
-
-
                 } else {
                     System.out.println("Fel namn eller pinkod. Försök igen!");
                 }
